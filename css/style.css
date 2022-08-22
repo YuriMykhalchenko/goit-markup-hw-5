@@ -144,8 +144,6 @@ body {
   line-height: calc(16 / 14);
   letter-spacing: 0.02em;
   color: currentColor;
-  content: '';
-  height: 4px;
   background-size: contain;
   border-radius: 2px;
   background-color: var(--main-color);
@@ -227,7 +225,9 @@ body {
 
 .center-hero {
   background-color: rgba(47, 48, 58, 0.4);
-  background-image: url("../img/Img-hero.jpg"), linear-gradient(to right, var(--bg-hero), var(--bg-hero));
+  background-image: linear-gradient(to right,
+      rgba(47, 48, 58, 0.4),
+      rgba(47, 48, 58, 0.4)), url(../img/Img-hero.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -270,7 +270,9 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding: 10px 32px;
-
+  transition-property: background-color, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .center-hero-button:hover,
@@ -467,6 +469,7 @@ body {
 .clients-item-link:hover,
 .clients-item-link:focus {
   border: 1px solid var(--accent-color);
+  color: var(--accent-color);
 }
 
 .clients-item-link {
@@ -492,10 +495,6 @@ body {
   fill: currentColor;
 }
 
-.clients-item-link:hover .clients-icon,
-.clients-item-link:focus .clients-icon {
-  fill: var(--accent-color);
-}
 
 .backdrop {
   position: fixed;
@@ -686,13 +685,15 @@ body {
   border-radius: 4px;
   border: 1px var(--third-color);
   padding: 6px 22px;
-  transition-property: box-shadow;
+  transition-property: box-shadow, color, background-color;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .middle-nav-button:hover,
 .middle-nav-button:focus {
+  color: var(--main-color);
+  background-color: var(--accent-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 
@@ -751,7 +752,8 @@ body {
   color: var(--text-color);
 }
 
-.middle-choice-link:hover .overlay-text {
+.middle-choice-link:hover .overlay-text,
+.middle-choice-link:focus .overlay-text {
   transform: translateY(0);
 }
 
